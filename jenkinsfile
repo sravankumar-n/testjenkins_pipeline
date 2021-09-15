@@ -25,7 +25,7 @@ pipeline {
     
     stages {
 	
-	  stage('Set Environment') {
+	  stage('Set Hostname') {
             steps {
                 script {
 		      echo "${HOSTNAME}"
@@ -38,6 +38,7 @@ pipeline {
                 }
             }
         }
+/*	
       stage('Push S3 Files') {
             steps {
                 dir(env.FILES_DIR) {
@@ -45,11 +46,11 @@ pipeline {
                 }
             }
         }
-
+*/
         stage('Pull S3 Files') {
             steps {
-                sh "ssh ec2-user@internalhaproxy.${ENVIRONMENT}.${CLIENT}.insurcloud.ca 'sudo mkdir -p ${HAPROXY_DIR}'"
-                sh "ssh ec2-user@internalhaproxy.${ENVIRONMENT}.${CLIENT}.insurcloud.ca 'sudo aws s3 cp ${S3_BUCKET}/${ENVIRONMENT}/internal/ ${HAPROXY_DIR} --recursive && sudo chmod -R 755 ${HAPROXY_DIR}'"
+                sh "ssh ec2-user@${HOSTNAME} 'sudo mkdir -p ${HAPROXY_DIR}'"
+               // sh "ssh ec2-user@${HOSTNAME} 'sudo aws s3 cp ${S3_BUCKET}/${ENVIRONMENT}/internal/ ${HAPROXY_DIR} --recursive && sudo chmod -R 755 ${HAPROXY_DIR}'"
             }
         }
 
