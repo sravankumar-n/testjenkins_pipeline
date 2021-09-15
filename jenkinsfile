@@ -1,3 +1,4 @@
+def HOSTNAME = ""
 pipeline {
     agent { label 'dev' }
 
