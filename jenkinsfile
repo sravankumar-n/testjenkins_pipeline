@@ -1,3 +1,4 @@
+def HOSTNAME = ""
 pipeline {
     agent { label 'dev' }
 
@@ -14,7 +15,7 @@ pipeline {
         CLIENT = "CMIG"
         HAPROXY_DIR = "/var/haproxy"
         NEXUS_URL = "nexus.cmig.insurcloud.ca"
-	HOSTNAME = ""
+	
     }
 
     options {
