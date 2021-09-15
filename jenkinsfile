@@ -35,10 +35,7 @@ pipeline {
                 }
             }
         }
-
-
-/*
-        stage('Push S3 Files') {
+      stage('Push S3 Files') {
             steps {
                 dir(env.FILES_DIR) {
                     sh 'aws s3 cp ${ENVIRONMENT}/internal ${S3_BUCKET}/${ENVIRONMENT}/internal/config --recursive'
@@ -84,6 +81,5 @@ pipeline {
                                                                                 ${NEXUS_URL}/haproxy:${BUILD}'"
             }
         }
-		
-*\	
-    }}
+    }
+    }
