@@ -1,4 +1,4 @@
-def HOSTNAME = ""
+def HOSTNAME = "test"
 pipeline {
     agent { label 'dev' }
 
@@ -34,7 +34,7 @@ pipeline {
                      } else if ( "${ENVIRONMENT}" == 'DEV02' ) {
                    HOSTNAME = "internalhaproxy-${ENVIRONMENT}.nonprod.${CLIENT}.insurcloud.ca"
                    }
-                   echo ${HOSTNAME}
+                   echo "${HOSTNAME}"
                 }
             }
         }
