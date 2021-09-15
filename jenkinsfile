@@ -1,4 +1,3 @@
-def HOSTNAME = "test"
 pipeline {
     agent { label 'dev' }
 
