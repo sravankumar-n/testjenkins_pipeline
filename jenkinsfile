@@ -14,6 +14,7 @@ pipeline {
         CLIENT = "CMIG"
         HAPROXY_DIR = "/var/haproxy"
         NEXUS_URL = "nexus.cmig.insurcloud.ca"
+	HOSTNAME = ""
     }
 
     options {
@@ -26,7 +27,8 @@ pipeline {
 	stage('Set Environment') {
             steps {
                 script {
-				    if (${ENVIRONMENT} == 'DEV01') {
+		      echo ${HOSTNAME}
+		     if (${ENVIRONMENT} == 'DEV01') {
                        HOSTNAME = "internalhaproxy.${ENVIRONMENT}.${CLIENT}.insurcloud.ca"
                      } else if (${ENVIRONMENT} == 'DEV02' ) {
                    HOSTNAME = "internalhaproxy-${ENVIRONMENT}.nonprod.${CLIENT}.insurcloud.ca"
