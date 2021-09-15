@@ -28,8 +28,7 @@ pipeline {
 	  stage('Set Hostname') {
             steps {
                 script {
-		      echo "${HOSTNAME}"
-		      if ( "${ENVIRONMENT}" == 'DEV01' ) {
+		       if ( "${ENVIRONMENT}" == 'DEV01' ) {
                        HOSTNAME = "internalhaproxy.${ENVIRONMENT}.${CLIENT}.insurcloud.ca"
                      } else if ( "${ENVIRONMENT}" == 'DEV02' ) {
                    HOSTNAME = "internalhaproxy-${ENVIRONMENT}.nonprod.${CLIENT}.insurcloud.ca"
