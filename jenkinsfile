@@ -22,6 +22,22 @@ pipeline {
     }
     
     stages {
+	
+	stage('Set Environment') {
+            steps {
+                script {
+				    if (${ENVIRONMENT} == 'DEV01') {
+                       HOSTNAME = "internalhaproxy.${ENVIRONMENT}.${CLIENT}.insurcloud.ca"
+                     } else if (${ENVIRONMENT} == 'DEV02' ) {
+                   HOSTNAME = "internalhaproxy-${ENVIRONMENT}.nonprod.${CLIENT}.insurcloud.ca"
+                   }
+                   echo ${HOSTNAME}
+                }
+            }
+        }
+
+
+/*
         stage('Push S3 Files') {
             steps {
                 dir(env.FILES_DIR) {
@@ -29,7 +45,7 @@ pipeline {
                 }
             }
         }
-/*
+
         stage('Pull S3 Files') {
             steps {
                 sh "ssh ec2-user@internalhaproxy.${ENVIRONMENT}.${CLIENT}.insurcloud.ca 'sudo mkdir -p ${HAPROXY_DIR}'"
