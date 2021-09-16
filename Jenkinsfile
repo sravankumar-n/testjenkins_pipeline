@@ -79,7 +79,7 @@ pipeline {
                 }
             }
         }
-*\
+*/
         stage('Start Each Application'){
             environment { 
               //  RABBITMQ_ERLANG_COOKIE = credentials('dev-rabbitmq-erlang-cookie')
