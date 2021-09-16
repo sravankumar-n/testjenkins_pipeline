@@ -9,7 +9,7 @@ pipeline {
         CONSUL_URL = "https://consul.cmig.insurcloud.ca"
         RMQ_DIR = "/var/rabbitmq"
         FILES_DIR = "client/CMIG/cms/deploy/microservices/DEV/files"
-        HOSTNAME1 = ""
+ //       HOSTNAME1 = ""
     }
 
     options {
@@ -74,7 +74,7 @@ pipeline {
             steps {
                 script {
                     if(params.CONFIG_UPDATE){
-			    echo "${HOSTNAME}"
+			echo "${HOSTNAME}"
                         //sh 'ssh ec2-user@${HOSTNAME1}  "docker service rm ${STACK_NAME}_rabbitmq"'
                         //sh 'ssh ec2-user@${HOSTNAME1}  "docker config rm ${STACK_NAME}_definitions ${STACK_NAME}_rabbitmq-config"'
                     }
