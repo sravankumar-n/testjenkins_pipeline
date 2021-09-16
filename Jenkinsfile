@@ -69,7 +69,7 @@ pipeline {
         stage('Update Config'){
             environment{
                 STACK_NAME = "rabbitmq"
-		HOSTNAME = "${HOSTNAME1}"
+//		HOSTNAME = "${HOSTNAME1}"
             }
             steps {
                 script {
