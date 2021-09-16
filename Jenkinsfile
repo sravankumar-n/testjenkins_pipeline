@@ -69,11 +69,12 @@ pipeline {
         stage('Update Config'){
             environment{
                 STACK_NAME = "rabbitmq"
+		HOSTNAME = "${HOSTNAME1}"
             }
             steps {
                 script {
                     if(params.CONFIG_UPDATE){
-			    echo "${HOSTNAME1}"
+			    echo "${HOSTNAME}"
                         //sh 'ssh ec2-user@${HOSTNAME1}  "docker service rm ${STACK_NAME}_rabbitmq"'
                         //sh 'ssh ec2-user@${HOSTNAME1}  "docker config rm ${STACK_NAME}_definitions ${STACK_NAME}_rabbitmq-config"'
                     }
@@ -84,11 +85,12 @@ pipeline {
         stage('Start Each Application'){
             environment { 
                 RABBITMQ_ERLANG_COOKIE = credentials('dev-rabbitmq-erlang-cookie')
+		    HOSTNAME = "${HOSTNAME1}"
             }
             steps {
                 dir(env.CLIENT) {
                     script {
-                        echo "env.${HOSTNAME1}"
+                        echo "${HOSTNAME}"
                        // sh 'ssh ec2-user@${HOSTNAME1} "export BUILD=${BUILD}; export ENV=${ENVIRONMENT}; export RABBITMQ_ERLANG_COOKIE=${RABBITMQ_ERLANG_COOKIE}; docker stack deploy --prune --with-registry-auth --compose-file=rmq-stack.yml rabbitmq"'
                     }
                 }
