@@ -9,7 +9,6 @@ pipeline {
         CONSUL_URL = "https://consul.cmig.insurcloud.ca"
         RMQ_DIR = "/var/rabbitmq"
         FILES_DIR = "client/CMIG/cms/deploy/microservices/DEV/files"
- //       HOSTNAME1 = ""
     }
 
     options {
@@ -69,13 +68,10 @@ pipeline {
         stage('Update Config'){
             environment{
                 STACK_NAME = "rabbitmq"
-		HOSTNAME = "ABCd"
             }
             steps {
                 script {
                     if(params.CONFIG_UPDATE){
-			echo "${HOSTNAME}"
-			echo "ABC"
 			echo "${HOSTNAME1}"
                         //sh 'ssh ec2-user@${HOSTNAME1}  "docker service rm ${STACK_NAME}_rabbitmq"'
                         //sh 'ssh ec2-user@${HOSTNAME1}  "docker config rm ${STACK_NAME}_definitions ${STACK_NAME}_rabbitmq-config"'
@@ -93,6 +89,7 @@ pipeline {
                 dir(env.CLIENT) {
                     script {
                         echo "${HOSTNAME}"
+			echo "${HOSTNAME1}"
                        // sh 'ssh ec2-user@${HOSTNAME1} "export BUILD=${BUILD}; export ENV=${ENVIRONMENT}; export RABBITMQ_ERLANG_COOKIE=${RABBITMQ_ERLANG_COOKIE}; docker stack deploy --prune --with-registry-auth --compose-file=rmq-stack.yml rabbitmq"'
                     }
                 }
