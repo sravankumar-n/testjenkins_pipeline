@@ -87,7 +87,7 @@ pipeline {
             steps {
                 dir(env.CLIENT) {
                     script {
-                        echo ${HOSTNAME1}
+                        echo "${HOSTNAME1}"
                        // sh 'ssh ec2-user@${HOSTNAME1} "export BUILD=${BUILD}; export ENV=${ENVIRONMENT}; export RABBITMQ_ERLANG_COOKIE=${RABBITMQ_ERLANG_COOKIE}; docker stack deploy --prune --with-registry-auth --compose-file=rmq-stack.yml rabbitmq"'
                     }
                 }
