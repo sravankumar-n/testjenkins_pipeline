@@ -69,12 +69,14 @@ pipeline {
         stage('Update Config'){
             environment{
                 STACK_NAME = "rabbitmq"
-		HOSTNAME = "ABC"
+		HOSTNAME = "ABCd"
             }
             steps {
                 script {
                     if(params.CONFIG_UPDATE){
 			echo "${HOSTNAME}"
+			echo "ABC"
+			echo "${HOSTNAME1}"
                         //sh 'ssh ec2-user@${HOSTNAME1}  "docker service rm ${STACK_NAME}_rabbitmq"'
                         //sh 'ssh ec2-user@${HOSTNAME1}  "docker config rm ${STACK_NAME}_definitions ${STACK_NAME}_rabbitmq-config"'
                     }
